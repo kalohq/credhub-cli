@@ -30,7 +30,7 @@ func withTemporaryFile(wantingFile func(string)) error {
 	return os.Remove(name)
 }
 
-var _ = FDescribe("Export", func() {
+var _ = Describe("Export", func() {
 	BeforeEach(func() {
 		login()
 	})

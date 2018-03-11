@@ -76,6 +76,15 @@ var _ = Describe("ExportCredentials", func() {
 			}
 		}
 	})
+
+	It("produces YAML that can be reimported", func() {
+		exportCreds, _ := models.ExportCredentials(credentials)
+		credImporter := &models.CredentialBulkImport{}
+
+		err := credImporter.ReadBytes(exportCreds.Bytes)
+
+		Expect(err).To(BeNil())
+	})
 })
 
 var _ = Describe("CredentialBulkExport", func() {
